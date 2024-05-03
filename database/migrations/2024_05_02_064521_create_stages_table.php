@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->integer('lesson_stage');
+            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
