@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware('auth'); */
 
 Route::resource('levels', LevelController::class)
-    ->only(['index', 'store']);
+    ->only(['index', 'store', 'destroy']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

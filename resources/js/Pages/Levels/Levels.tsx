@@ -11,20 +11,9 @@ export type LevelsProps = {
 }
 
 export default function Levels({ levels }: LevelsProps) {
-    console.log(levels);
     return (
         <main>
             <Head title="Levels"/>
-            {/* {levels.length > 0
-                ?
-                <ul>
-                    {levels.map( (l) => <li key={l.id}> {l.lesson_levels} </li>)}
-                </ul>
-                :
-                <div>
-                    <h2>Hello World! (Levels)</h2>
-                </div>
-            } */}
             <LevelSelector levels={levels} />
         </main>
     );

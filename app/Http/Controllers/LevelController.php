@@ -55,8 +55,10 @@ class LevelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Level $level)
+    public function destroy(Level $level): RedirectResponse
     {
-        //
+        $level->delete();
+
+        return redirect(route('levels.index'));
     }
 }
