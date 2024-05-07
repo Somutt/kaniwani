@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('radicals', function (Blueprint $table) {
             $table->id();
-            $table->char('ideogram', 1);
+            $table->char('ideogram', 1)->unique();
             $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
