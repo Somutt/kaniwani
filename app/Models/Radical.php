@@ -10,7 +10,7 @@ class Radical extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ideogram', 'level_id'];
+    protected $fillable = ['ideogram', 'level', 'meaning', 'level_id'];
 
     public function level(): BelongsTo
     {
