@@ -73,8 +73,10 @@ class RadicalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Radical $radical)
+    public function destroy(Radical $radical): RedirectResponse
     {
-        //
+        $radical->delete();
+
+        return redirect(route('radicals.index'));
     }
 }

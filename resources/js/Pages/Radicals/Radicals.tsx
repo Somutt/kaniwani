@@ -1,4 +1,4 @@
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import AddRadicalForm from "./Partials/AddRadicalForm";
 
 export type RadicalsTypeProps = {
@@ -18,18 +18,46 @@ export default function Radicals({ radicals = [], keys = [] }: RadicalsTypeProps
     return (
         <main>
             <Head title="Radicals"/>
-            <h2>Hello World! (Radicals)</h2>
-            <section className="mt-6 mx-5 px-4 py-3 bg-slate-100 rounded-md">
-                <div className="mt-6 mb-4">
-                    <h2 className="text-2xl font-light text-slate-500">Radicals</h2>
-                    <ol>
-                        {
-                            keys.map( k => <li><h3>Level {k}</h3> {radicals.map( r => r.level === k ? <p>{r.ideogram}</p> : '')} </li>)
-                        }
-                    </ol>
-                </div>
-                <AddRadicalForm/>
-            </section>
+            <h2 className="mt-6 mx-5 text-4xl font-thin">Radicals</h2>
+            <div className="items-center mx-5 mt-3 flex text-slate-500">
+                <span className="mr-1 text-base">Levels</span>
+                <span className="mr-1">{'>'}</span>
+                <ul className="flex items-center">
+                    {keys.map(k =>
+                                <li>
+                                    <a href="" className="text-sm px-2 py-1 mr-1 bg-slate-200 hover:bg-slate-600 hover:text-white">
+                                        {k}
+                                    </a>
+                                </li>
+                            )}
+                </ul>
+            </div>
+            <ol>
+                {keys.map(k =>
+                            <li>
+                                <section className="mt-3 mx-5 px-4 py-3 bg-slate-100 rounded-md">
+                                <h3 className="text-2xl text-slate-500 font-thin">Level {k}</h3>
+                                <ul className="my-1">
+                                    {radicals.map( r => r.level === k ?
+                                        <div className="flex justify-between items-center text-white hover:cursor-pointer">
+                                            <div className="flex-1 flex justify-between items-center p-3 bg-blue-500 border-b-2">
+                                                <span className="text-xl">{r.ideogram}</span>
+                                                <span>{r.meaning}</span>
+                                            </div>
+                                            <Link as="button" href={route('radicals.destroy', r.id)}
+                                            method="delete"
+                                            className="p-0.5 bg-red-400 border-2 border-l-0 border-transparent hover:cursor-pointer hover:border-black">
+                                            x
+                                            </Link>
+                                        </div>
+                                        : '')
+                                    }
+                                </ul>
+                                </section>
+                            </li>
+                        )}
+            </ol>
+            <AddRadicalForm/>
         </main>
     );
 }
