@@ -18,6 +18,20 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware('auth')->name('dashboard');
 
+Route::resource('levels', LevelController::class)
+->only(['index', 'store', 'destroy']);
+
+Route::resource('radicals', RadicalController::class)
+->only(['index', 'store', 'destroy']);
+
+Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 /* Route::prefix('/admin')->group(function () {
     Route::get('/edit', function () { return Inertia::render('Admin/Edit', [
         'laravelVersion' => Application::VERSION,
@@ -25,17 +39,5 @@ Route::get('/dashboard', function () {
         ]);
     })->name('admin.edit');
 })->middleware('auth'); */
-
-Route::resource('levels', LevelController::class)
-    ->only(['index', 'store', 'destroy']);
-
-Route::resource('radicals', RadicalController::class)
-    ->only(['index', 'store', 'destroy']);
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';

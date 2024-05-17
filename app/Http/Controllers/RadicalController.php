@@ -57,9 +57,13 @@ class RadicalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Radical $radical)
+    public function show(string $meaning): Response
     {
-        //
+        $radical = Radical::where('meaning', $meaning)->get()->first();
+
+        return Inertia::render('Radicals/RadicalPage', [
+            'radical' => $radical,
+        ]);
     }
 
     /**
