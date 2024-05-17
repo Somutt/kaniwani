@@ -19,10 +19,12 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 Route::resource('levels', LevelController::class)
-->only(['index', 'store', 'destroy']);
+    ->only(['index', 'store', 'destroy']);
+
+Route::get('levels/{lesson_level}', [LevelController::class, 'show'])->name('levels.show');
 
 Route::resource('radicals', RadicalController::class)
-->only(['index', 'store', 'destroy']);
+    ->only(['index', 'store', 'destroy']);
 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
 

@@ -9,15 +9,17 @@ export default function LevelSelector({ levels }: LevelsProps) {
                 <h2 className="text-2xl font-light text-slate-500">Levels</h2>
                     <ul>
                         {
-                            levels?.map( level => <li key={level.id}>
-                                    <div className="flex justify-between items-center p-3 bg-slate-500 text-white border-b-2 hover:cursor-default">
+                            levels?.map( level => <li key={level.id} className="flex items-center">
+                                    <Link as="button" href={route('levels.show', level.lesson_level)}
+                                        method="get"
+                                        className="flex-1 flex p-3 bg-slate-500 text-white border-b-2">
                                         <span className="text-2xl">Level {level.lesson_level}</span>
-                                        <Link as="button" href={route('levels.destroy', level.id)}
-                                            method="delete"
-                                            className="hover:text-red-300 hover:cursor-pointer">
-                                            delete
-                                        </Link>
-                                    </div>
+                                    </Link>
+                                    <Link as="button" href={route('levels.destroy', level.id)}
+                                        method="delete"
+                                        className="p-0.5 bg-red-400 border-2 border-l-0 border-transparent hover:cursor-pointer hover:border-black">
+                                        x
+                                    </Link>
                                 </li>
                             )
                         }
