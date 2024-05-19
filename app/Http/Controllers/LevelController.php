@@ -39,9 +39,16 @@ class LevelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Level $level)
+    public function show(int $lesson_level): Response
     {
-        //
+        $level = Level::where('lesson_level', $lesson_level)->get()->first();
+
+        $radicals = $level->radicals()->get();
+
+        return Inertia::render('Levels/LevelPage', [
+            'lesson_level' => $lesson_level,
+            'radicals' => $radicals,
+        ]);
     }
 
     /**
