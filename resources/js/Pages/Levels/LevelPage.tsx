@@ -11,7 +11,6 @@ export type LevelPageProps = {
 };
 
 export default function LevelPage({ lesson_level, radicals }: LevelPageProps) {
-    console.log(lesson_level);
     console.log(radicals);
     return (
         <main>

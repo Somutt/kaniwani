@@ -17,17 +17,16 @@ class RadicalController extends Controller
     public function index(): Response
     {
         $keys = [];
-        $radicals = Radical::all()->groupBy('level_id')->toArray();
+        $radicals = Radical::where('id', '!=', 0)->orderBy('meaning')->get();
+        $radicals_keyed = Radical::all()->groupBy('level_id')->toArray();
 
-        foreach($radicals as $key => $item) {
+        foreach($radicals_keyed as $key => $item) {
             array_push($keys, Level::where('id', $key)->get()->first()->lesson_level);
         }
-
         sort($keys);
-        //$new_radicals = array_combine($keys, $radicals);
 
         return Inertia::render('Radicals/Radicals', [
-            'radicals' => Radical::all(),
+            'radicals' => $radicals,
             'keys' => $keys,
         ]);
     }

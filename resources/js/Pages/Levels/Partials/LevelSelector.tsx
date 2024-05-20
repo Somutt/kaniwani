@@ -5,7 +5,7 @@ import AddLevelForm from "./AddLevelForm";
 export default function LevelSelector({ levels }: LevelsProps) {
     return (
         <section className="mt-6 mx-5 px-4 py-3 bg-slate-100 rounded-md">
-            <div className="mt-6 mb-4">
+            <div className="mt-3 mb-4">
                 <h2 className="text-2xl font-light text-slate-500">Levels</h2>
                     <ul>
                         {
