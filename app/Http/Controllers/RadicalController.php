@@ -23,6 +23,7 @@ class RadicalController extends Controller
         foreach($radicals_keyed as $key => $item) {
             array_push($keys, Level::where('id', $key)->get()->first()->lesson_level);
         }
+
         sort($keys);
 
         return Inertia::render('Radicals/Radicals', [
