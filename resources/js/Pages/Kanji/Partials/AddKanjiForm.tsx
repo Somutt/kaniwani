@@ -1,3 +1,4 @@
+import InputError from "@/Components/InputError";
 import { useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 
@@ -49,6 +50,12 @@ export default function AddKanjiForm() {
                 className="bg-red-400 p-2 border-2 border-transparent hover:border-2 hover:border-black"
                 type="submit">Add Kanji
             </button>
+            <InputError message={errors.ideogram} className='mt-2'/>
+            <InputError message={errors.meaning} className='mt-2'/>
+            <InputError message={errors.secondary_meaning} className='mt-2'/>
+            <InputError message={errors.onyomi} className='mt-2'/>
+            <InputError message={errors.kunyomi} className='mt-2'/>
+            <InputError message={errors.level} className='mt-2'/>
         </form>
     );
 }

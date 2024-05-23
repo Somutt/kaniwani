@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kanji', function (Blueprint $table) {
+        Schema::create('kanjis', function (Blueprint $table) {
             $table->id();
             $table->string('ideogram')->unique();
             $table->string('meaning');
-            $table->string('secondary_meanings')->nullable();
+            $table->string('secondary_meaning')->nullable();
             $table->string('onyomi')->nullable();
             $table->string('kunyomi')->nullable();
             $table->integer('level');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kanji');
+        Schema::dropIfExists('kanjis');
     }
 };
