@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('onyomi')->nullable();
             $table->string('kunyomi')->nullable();
             $table->integer('level');
-            $table->foreignId('stage_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

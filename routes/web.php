@@ -3,6 +3,8 @@
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RadicalController;
+use App\Http\Controllers\KanjiController;
+use App\Http\Controllers\StageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +29,13 @@ Route::resource('radicals', RadicalController::class)
     ->only(['index', 'store', 'destroy']);
 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
+
+Route::post('stages', [StageController::class, 'store'])->name('stage.store');
+
+Route::resource('kanji', KanjiController::class)
+    ->only(['index', 'store', 'destroy']);
+
+Route::get('kanji/{meaning}', [KanjiController::class, 'show'])->name('kanji.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
