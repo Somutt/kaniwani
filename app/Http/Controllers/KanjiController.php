@@ -78,8 +78,10 @@ class KanjiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kanji $kanji)
+    public function destroy(Kanji $kanji): RedirectResponse
     {
-        //
+        $kanji->delete();
+
+        return redirect(route('kanji.index'));
     }
 }

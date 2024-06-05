@@ -15,7 +15,7 @@ export default function RadicalPage({ radical }: RadicalPageProps) {
         <>
             <Head title={`Radical / ${radical.meaning}`}/>
             <header className="flex items-center my-6 ml-5">
-                <div className="flex text-center text-2xl font-semibold leading-[3rem] mr-4">
+                <div className="flex text-center text-2xl leading-[3rem] mr-4">
                     <a href="" className="bg-slate-400 text-slate-100 shadow-md rounded w-12 h-12 mr-2">{radical.level}</a>
                     <span className="bg-blue-400 text-white shadow-md rounded w-12 h-12 mr-2">{radical.ideogram}</span>
                 </div>

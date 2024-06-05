@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stages', function (Blueprint $table) {
+        Schema::create('kanji_vocabularies', function (Blueprint $table) {
             $table->id();
-            $table->integer('stage_number');
-            $table->integer('level');
-            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('kanji_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('vocabulary_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stages');
+        Schema::dropIfExists('kanji_vocabularies');
     }
 };

@@ -34,25 +34,25 @@ export default function Radicals({ radicals = [], keys = [] }: RadicalsTypeProps
                 {keys.map(k =>
                             <li key={k}>
                                 <section className="mt-3 mx-5 px-4 py-3 bg-slate-100 rounded-md">
-                                <h3 className="text-2xl text-slate-500 font-thin">Level {k}</h3>
-                                <ul className="my-1">
-                                    {radicals.map( r => r.level === k ?
-                                        <li key={r.id} className="flex justify-between items-center text-white hover:cursor-pointer">
-                                            <Link as="button" href={route('radicals.show', r.meaning.toLowerCase())}
-                                                method="get"
-                                                className="flex-1 flex justify-between items-center p-3 bg-blue-500 border-b-2">
-                                                <span className="text-xl">{r.ideogram}</span>
-                                                <span>{r.meaning}</span>
-                                            </Link>
-                                            <Link as="button" href={route('radicals.destroy', r.id)}
-                                            method="delete"
-                                            className="p-0.5 bg-red-400 border-2 border-l-0 border-transparent hover:cursor-pointer hover:border-black">
-                                            x
-                                            </Link>
-                                        </li>
-                                        : '')
-                                    }
-                                </ul>
+                                    <h3 className="text-2xl text-slate-500 font-thin">Level {k}</h3>
+                                    <ul className="my-1">
+                                        {radicals.map( r => r.level === k ?
+                                            <li key={r.id} className="flex justify-between items-center text-white hover:cursor-pointer">
+                                                <Link as="button" href={route('radicals.show', r.meaning.toLowerCase())}
+                                                    method="get"
+                                                    className="flex-1 flex justify-between items-center p-3 bg-blue-500 border-b-2">
+                                                    <span className="text-2xl">{r.ideogram}</span>
+                                                    <span>{r.meaning}</span>
+                                                </Link>
+                                                <Link as="button" href={route('radicals.destroy', r.id)}
+                                                method="delete"
+                                                className="p-0.5 bg-red-400 border-2 border-l-0 border-transparent hover:cursor-pointer hover:border-black">
+                                                x
+                                                </Link>
+                                            </li>
+                                            : '')
+                                        }
+                                    </ul>
                                 </section>
                             </li>
                         )}

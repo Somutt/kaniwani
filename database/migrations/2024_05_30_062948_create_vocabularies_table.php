@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stages', function (Blueprint $table) {
+        Schema::create('vocabularies', function (Blueprint $table) {
             $table->id();
-            $table->integer('stage_number');
+            $table->string('ideogram', 7)->unique();
+            $table->string('meaning', 20);
             $table->integer('level');
             $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stages');
+        Schema::dropIfExists('vocabularies');
     }
 };

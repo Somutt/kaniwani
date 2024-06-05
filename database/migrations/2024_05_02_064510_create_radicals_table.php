@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('radicals', function (Blueprint $table) {
             $table->id();
             $table->char('ideogram', 1)->unique();
-            $table->integer('level');
             $table->string('meaning', 20)->unique();
+            $table->integer('level');
             $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
