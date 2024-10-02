@@ -2,10 +2,6 @@
 
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RadicalController;
-use App\Http\Controllers\KanjiController;
-use App\Http\Controllers\StageController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,8 +19,9 @@ Route::get('/dashboard', function () {
 Route::resource('levels', LevelController::class)
     ->only(['index', 'store', 'destroy']);
 
-Route::get('levels/{lesson_level}', [LevelController::class, 'show'])->name('levels.show');
+Route::get('levels/{level_number}', [LevelController::class, 'show'])->name('levels.show');
 
+/* 
 Route::resource('radicals', RadicalController::class)
     ->only(['index', 'store', 'destroy']);
 
@@ -36,19 +33,12 @@ Route::resource('kanji', KanjiController::class)
     ->only(['index', 'store', 'destroy']);
 
 Route::get('kanji/{meaning}', [KanjiController::class, 'show'])->name('kanji.show');
+ */
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-/* Route::prefix('/admin')->group(function () {
-    Route::get('/edit', function () { return Inertia::render('Admin/Edit', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-        ]);
-    })->name('admin.edit');
-})->middleware('auth'); */
 
 require __DIR__.'/auth.php';

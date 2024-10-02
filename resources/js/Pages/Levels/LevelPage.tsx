@@ -1,17 +1,18 @@
 import { Head, Link } from "@inertiajs/react";
 
+
 export type LevelPageProps = {
     lesson_level: number;
-    radicals: {
+    /* radicals: {
         id: number;
         ideogram: string;
         level: number;
         meaning: string;
-    }[];
+    }[]; */
 };
 
-export default function LevelPage({ lesson_level, radicals }: LevelPageProps) {
-    console.log(radicals);
+export default function LevelPage({ lesson_level}: LevelPageProps) { // , radicals 
+    // console.log(radicals);
     return (
         <main>
             <Head title={`Level ${lesson_level}`}/>
@@ -38,6 +39,7 @@ export default function LevelPage({ lesson_level, radicals }: LevelPageProps) {
                     </li>
                 </ul>
             </div>
+{/* 
             <ul>
                 <li>
                     <section className="mt-3 mx-5 px-4 py-3 bg-slate-100 rounded-md">
@@ -67,6 +69,7 @@ export default function LevelPage({ lesson_level, radicals }: LevelPageProps) {
                     </section>
                 </li>
             </ul>
+*/}
         </main>
     );
 }

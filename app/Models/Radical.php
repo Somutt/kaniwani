@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Radical extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ideogram', 'level', 'meaning', 'level_id'];
+    protected $fillable = ['ideogram', 'meaning', 'level', 'stage_id'];
 
-    public function level(): BelongsTo
+    public function stages()
     {
-        return $this->belongsTo(Level::class);
+        return $this->hasOne(Stage::class);
     }
 }

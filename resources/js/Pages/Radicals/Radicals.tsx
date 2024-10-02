@@ -27,7 +27,7 @@ export default function Radicals({ radicals = [], keys = [] }: RadicalsTypeProps
                                         {k}
                                     </a>
                                 </li>
-                            )}
+                    )}
                 </ul>
             </div>
             <ol>

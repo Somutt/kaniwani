@@ -43,11 +43,11 @@ class LevelController extends Controller
     {
         $level = Level::where('lesson_level', $lesson_level)->get()->first();
 
-        $radicals = $level->radicals()->orderBy('meaning')->get()->toArray();
+        //$radicals = $level->radicals()->orderBy('meaning')->get()->toArray();
 
         return Inertia::render('Levels/LevelPage', [
             'lesson_level' => $lesson_level,
-            'radicals' => $radicals,
+            //'radicals' => $radicals,
         ]);
     }
 

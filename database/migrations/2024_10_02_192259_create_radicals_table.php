@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('ideogram', 1)->unique();
             $table->string('meaning', 20)->unique();
             $table->integer('level');
-            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('stage_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
