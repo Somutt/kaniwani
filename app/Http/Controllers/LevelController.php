@@ -15,8 +15,11 @@ class LevelController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Levels/Levels');
-        //[ 'levels' => Level::orderBy('lesson_level')->where('lesson_level', '>', 0)->get(), ]);
+        $levels = Level::orderBy('level_number')->get();
+
+        return Inertia::render('Levels/Levels', [
+            'levels' => $levels,
+        ]);
     }
 
     /**
@@ -25,11 +28,11 @@ class LevelController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'lesson_level' => 'required|min:1|integer|unique:levels',
+            'level_number' => 'required|min:1|integer|unique:levels',
         ]);
 
         Level::create([
-            'lesson_level' => (int) $request->lesson_level,
+            'level_number' => (int) $request->level_number,
         ]);
 
         return redirect(route('levels.index'));
@@ -38,14 +41,14 @@ class LevelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $lesson_level): Response
+    public function show(int $level_number): Response
     {
-        $level = Level::where('lesson_level', $lesson_level)->get()->first();
+        $level = Level::where('level_number', $level_number)->get()->first();
 
         //$radicals = $level->radicals()->orderBy('meaning')->get()->toArray();
 
         return Inertia::render('Levels/LevelPage', [
-            'lesson_level' => $lesson_level,
+            'level_number' => $level_number,
             //'radicals' => $radicals,
         ]);
     }

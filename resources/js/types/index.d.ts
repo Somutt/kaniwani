@@ -13,3 +13,12 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     };
     ziggy: Config & { location: string };
 };
+
+interface Level {
+    id: number;
+    level_number: number;
+}
+
+export type LevelProps = {
+    levels: Level[];
+};
