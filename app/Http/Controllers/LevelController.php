@@ -15,9 +15,8 @@ class LevelController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Levels/Levels', [
-            'levels' => Level::orderBy('lesson_level')->where('lesson_level', '>', 0)->get(),
-        ]);
+        return Inertia::render('Levels/Levels');
+        //[ 'levels' => Level::orderBy('lesson_level')->where('lesson_level', '>', 0)->get(), ]);
     }
 
     /**
