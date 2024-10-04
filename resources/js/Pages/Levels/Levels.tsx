@@ -5,7 +5,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import AddLevelForm from "./Partials/AddLevelForm";
 
 export default function Levels({ auth, levels }: PageProps<LevelProps>) { // { levels }: LevelsProps
-    console.log(levels);
+    console.log(levels[0]);
 
     return (
             <AuthenticatedLayout

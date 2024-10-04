@@ -9,7 +9,7 @@ class Stage extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['stage_number'];
+    protected $fillable = ['stage_number', 'level_id'];
 
     public function level()
     {

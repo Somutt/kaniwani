@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Level;
+use App\Models\Stage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,10 +16,10 @@ class LevelController extends Controller
      */
     public function index(): Response
     {
-        $levels = Level::orderBy('level_number')->get();
+        $levels = Level::orderBy('level_number')->with('stages')->get();
 
         return Inertia::render('Levels/Levels', [
-            'levels' => $levels,
+            'levels' => $levels
         ]);
     }
 

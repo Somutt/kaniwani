@@ -14,11 +14,21 @@ export type PageProps<T extends Record<string, unknown> = Record<string, unknown
     ziggy: Config & { location: string };
 };
 
+interface Stage {
+    id: number;
+    stage_number: number;
+}
+
 interface Level {
     id: number;
     level_number: number;
+    stages: Stage[];
 }
 
 export type LevelProps = {
-    levels: Level[];
+    levels: Level[]
 };
+
+export type StageProps = {
+    stages: Stage[];
+}
