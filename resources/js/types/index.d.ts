@@ -25,10 +25,23 @@ interface Level {
     stages: Stage[];
 }
 
+interface Radical {
+    id: number;
+    level: number;
+    ideogram: string;
+    meaning: string;
+}
+
 export type LevelProps = {
     levels: Level[]
 };
 
 export type StageProps = {
     stages: Stage[];
+}
+
+export type RadicalProps = {
+    stages: Stage[];
+    radicals: Radical[];
+    levels_used: number[];
 }
