@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RadicalController;
 use App\Http\Controllers\StageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,10 +25,10 @@ Route::get('levels/{level_number}', [LevelController::class, 'show'])->name('lev
 
 Route::post('/stage/{level_id}', [StageController::class, 'store'])->name('stage.store');
 
-/* 
 Route::resource('radicals', RadicalController::class)
     ->only(['index', 'store', 'destroy']);
 
+/* 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
 
 Route::post('stages', [StageController::class, 'store'])->name('stage.store');

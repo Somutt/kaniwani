@@ -4,7 +4,7 @@ import LevelStage from "./LevelStage";
 
 export default function LevelSelector({ levels }: LevelProps) {
     return (
-        <section className="mt-6 mx-5 px-4 py-3 bg-slate-500 rounded-md">
+        <section className="mt-6 mx-auto max-w-7xl px-4 py-3 bg-slate-500 rounded-md">
             <ol>
                 {levels.map( level => 
                     <li key={level.id} className="mb-2" >

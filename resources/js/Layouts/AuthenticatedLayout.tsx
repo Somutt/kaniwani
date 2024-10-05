@@ -24,8 +24,12 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
                             <div className="ms-3 flex items-center relative">
                                 <Link href={route('levels.index')}
-                                    className='px-3 py-2 text-sm leading-4 font-medium text-gray-400 border border-transparent rounded-md hover:border-gray-400 hover:text-gray-300 transition ease-in-out duration-150'>
+                                    className='px-3 py-2 text-sm leading-4 font-medium text-gray-400 border border-transparent rounded-md mr-1 hover:border-gray-400 hover:text-gray-300 transition ease-in-out duration-150'>
                                     Levels
+                                </Link>
+                                <Link href={route('radicals.index')}
+                                    className='px-3 py-2 text-sm leading-4 font-medium text-gray-400 border border-transparent rounded-md mr-1 hover:border-cyan-400 hover:text-cyan-400 transition ease-in-out duration-150'>
+                                    Radicals
                                 </Link>
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -99,6 +103,8 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         </div>
 
                         <div className="mt-3 space-y-1">
+                            <ResponsiveNavLink href={route('levels.index')}>Levels</ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('radicals.index')}>Radicals</ResponsiveNavLink>
                             <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out
