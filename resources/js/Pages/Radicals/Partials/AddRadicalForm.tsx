@@ -19,7 +19,7 @@ export default function AddRadicalForm({ stages }: StageProps) {
     }
     
     return (
-        <form className="w-full flex items-center justify-center mt-2"
+        <form className="hidden mt-2 md:flex md:flex-row md:w-full md:items-center md:justify-center "
             onSubmit={submit} 
             >
             <input className="rounded-md px-4 py-2 mr-2 w-36"

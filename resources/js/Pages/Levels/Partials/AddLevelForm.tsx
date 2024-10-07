@@ -15,7 +15,7 @@ export default function AddLevelForm() {
     }
 
     return (
-        <form className="w-full flex flex-col items-center mt-2"
+        <form className="hidden w-full md:flex flex-col items-center mt-2"
             onSubmit={submit}
             >
             <div className="flex items-center justify-center p-3">

@@ -50,3 +50,7 @@ export type RadicalListProps = {
     radicals: Radical[];
     levels_used: number[];
 }
+
+export type RadicalCardProps = {
+    radical: Radical;
+}

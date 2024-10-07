@@ -28,9 +28,9 @@ Route::post('/stage/{level_id}', [StageController::class, 'store'])->name('stage
 Route::resource('radicals', RadicalController::class)
     ->only(['index', 'store', 'destroy']);
 
-/* 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
 
+/* 
 Route::post('stages', [StageController::class, 'store'])->name('stage.store');
 
 Route::resource('kanji', KanjiController::class)

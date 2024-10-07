@@ -51,4 +51,9 @@ class RadicalController extends Controller
 
         redirect(route('radicals.index'));
     }
+
+    public function show(string $meaning)
+    {
+        dd($meaning);
+    }
 }
