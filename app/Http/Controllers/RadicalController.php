@@ -12,6 +12,7 @@ class RadicalController extends Controller
     public function index()
     {
         $levels_used = [];
+        
         $stages = Stage::orderBy('stage_number')->get(); // Retrieve all the stages in crescent order
         $radicals = Radical::orderBy('meaning')->get(); // Retrieve all radicals in alphabetical order
         $aux = Radical::all()->groupBy('level')->toArray(); // Retrive all radicals grouped by levels that are used

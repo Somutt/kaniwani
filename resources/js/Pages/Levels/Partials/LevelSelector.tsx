@@ -11,7 +11,7 @@ export default function LevelSelector({ levels }: LevelProps) {
                         <div className="relative flex items-center z-10">
                             <Link 
                                 href={route('levels.show', level.level_number)}
-                                className="flex-1 flex p-3 bg-slate-700 text-white border-b-2 rounded-md">
+                                className="flex-1 flex p-3 bg-slate-600 text-white border-b-2 rounded-md">
                                 <span className="text-2xl">Level {level.level_number} </span>
                             </Link>
                             <Link 

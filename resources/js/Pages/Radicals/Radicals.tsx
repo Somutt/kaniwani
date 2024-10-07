@@ -1,7 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps, RadicalProps, StageProps } from "@/types";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import AddRadicalForm from "./Partials/AddRadicalForm";
+import RadicalList from "./RadicalList";
 
 export default function Radicals({ auth, stages, radicals, levels_used }: PageProps<RadicalProps>) {
     console.log(radicals);
@@ -14,7 +15,7 @@ export default function Radicals({ auth, stages, radicals, levels_used }: PagePr
             <Head title="Radicals" />
 
             <AddRadicalForm stages={stages} />
-
+            <RadicalList radicals={radicals} levels_used={levels_used} />
         </AuthenticatedLayout>
     );
 }

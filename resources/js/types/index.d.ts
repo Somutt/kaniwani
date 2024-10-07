@@ -45,3 +45,8 @@ export type RadicalProps = {
     radicals: Radical[];
     levels_used: number[];
 }
+
+export type RadicalListProps = {
+    radicals: Radical[];
+    levels_used: number[];
+}
