@@ -8,7 +8,7 @@ export default function Levels({ auth, levels }: PageProps<LevelProps>) { // { l
     return (
             <AuthenticatedLayout
                 user={auth.user}
-                header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Levels</h2>}
+                header={<h2 className="font-semibold text-xl text-neutral-700 leading-tight">Levels</h2>}
             >
                 <Head title="Levels"/>
 
