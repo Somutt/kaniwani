@@ -22,6 +22,8 @@ class RadicalController extends Controller
             $levels_used[] = $level;
         }
 
+        sort($levels_used);
+
         return Inertia::render('Radicals/Radicals', [
             'stages' => $stages,
             'radicals' => $radicals,
@@ -55,5 +57,12 @@ class RadicalController extends Controller
     public function show(string $meaning)
     {
         dd($meaning);
+    }
+
+    public function destroy(Radical $radical)
+    {
+        $radical->delete();
+
+        return redirect(route('radicals.index'));
     }
 }
