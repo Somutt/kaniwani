@@ -1,22 +1,21 @@
-import { Head } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { PageProps, RadicalCardProps } from "@/types";
+import { Head, Link } from "@inertiajs/react";
 
-export type RadicalPageProps = {
-    radical: {
-        id: number;
-        ideogram?: string;
-        meaning:string;
-        level?: number;
-        level_id: number;
-    }
-};
-
-export default function RadicalPage({ radical }: RadicalPageProps) {
+export default function RadicalPage({ auth, radical }: PageProps<RadicalCardProps>) {
     return (
-        <>
+        <AuthenticatedLayout 
+            user={auth.user}
+            header={<h2 className="font-semibold text-xl text-neutral-700 leading-tight">Radical - {radical.meaning}</h2>}
+        >
             <Head title={`Radical / ${radical.meaning}`}/>
+
             <header className="flex items-center my-6 ml-5">
                 <div className="flex text-center text-2xl leading-[3rem] mr-4">
-                    <a href="" className="bg-slate-400 text-slate-100 shadow-md rounded w-12 h-12 mr-2">{radical.level}</a>
+                    <Link href={route('radicals.index')} 
+                        className="bg-slate-400 text-slate-100 shadow-md rounded w-12 h-12 mr-2">
+                        {radical.level}
+                    </Link>
                     <span className="bg-blue-400 text-white shadow-md rounded w-12 h-12 mr-2">{radical.ideogram}</span>
                 </div>
                 <h1 className="text-4xl font-thin">{radical.meaning}</h1>
@@ -29,6 +28,6 @@ export default function RadicalPage({ radical }: RadicalPageProps) {
             <div className="mx-5 mt-6">
                 <h2 className="text-2xl border-b">Found in Kanji</h2>
             </div>
-        </>
+        </AuthenticatedLayout>
     )
 }

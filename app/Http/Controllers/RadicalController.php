@@ -56,7 +56,11 @@ class RadicalController extends Controller
 
     public function show(string $meaning)
     {
-        dd($meaning);
+        $radical = Radical::where('meaning', $meaning)->first();
+
+        return Inertia::render('Radicals/RadicalPage', [
+            'radical' => $radical
+        ]);
     }
 
     public function destroy(Radical $radical)

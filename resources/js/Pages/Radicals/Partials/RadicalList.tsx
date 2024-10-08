@@ -8,17 +8,17 @@ export default function RadicalList({ radicals, levels_used }: RadicalListProps)
                 {levels_used.map( level => 
                     <li key={level} className="flex-1 flex-col px-2 bg-slate-200 border-b-2 rounded-md md:px-3 md:py-1">
                         <span className="text-3xl text-gray-400">Level {level}</span>
-                            <div className="flex flex-col md:flex-row md:flex-wrap">
+                            <ol className="flex flex-col md:flex-row md:flex-wrap">
                                 {radicals.map ( radical =>
-                                    <>
+                                    <li key={radical.id}>
                                         {radical.level == level ? 
                                             <RadicalCard radical={radical} />
                                             : 
-                                            ''
+                                            <></>
                                         }
-                                    </>
+                                    </li>
                                 )}
-                            </div>
+                            </ol>
                     </li>
                 )}
             </ol>
