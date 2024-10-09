@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KanjiController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RadicalController;
@@ -33,10 +34,11 @@ Route::resource('radicals', RadicalController::class)
 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
 
-/* 
+// kanji routes
 Route::resource('kanji', KanjiController::class)
     ->only(['index', 'store', 'destroy']);
 
+/* 
 Route::get('kanji/{meaning}', [KanjiController::class, 'show'])->name('kanji.show');
 */
 
