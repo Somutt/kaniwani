@@ -27,6 +27,7 @@ interface Radical {
 
 interface Kanji {
     id: number;
+    ideogram: string;
     onyomi?: string;
     kunyomi?: string;
     meaning: string;
@@ -68,4 +69,13 @@ export type KanjiProps = {
     stages: Stage[];
     kanjis: Kanji[];
     levels_used: number[];
+}
+
+export type KanjiListProps = {
+    kanjis: Kanji[];
+    levels_used: number[];
+}
+
+export type KanjiCardProps = {
+    kanji: Kanji;
 }

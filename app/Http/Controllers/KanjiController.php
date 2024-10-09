@@ -49,13 +49,12 @@ class KanjiController extends Controller
 
         $stage_id = $stage->id;
         $level_number = $stage->level->level_number;
-        $meaning = strtolower($request->meaning);
 
         Kanji::create([
             'ideogram' => $request->ideogram,
             'onyomi' => $request->onyomi,
             'kunyomi' => $request->kunyomi,
-            'meaning' => $meaning,
+            'meaning' => $request->meaning,
             'secondary_meanings' => $request->secondary_meanings,
             'level' => $level_number,
             'stage_id' => $stage_id
@@ -67,9 +66,11 @@ class KanjiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kanji $kanji)
+    public function show(string $ideogram)
     {
-        //
+        $kanji = Kanji::where('ideogram', $ideogram)->first();
+
+        dd($kanji);
     }
 
     /**
