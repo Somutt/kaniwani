@@ -1,5 +1,4 @@
 import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { StageProps } from "@/types";
 import { useForm } from "@inertiajs/react";

@@ -15,4 +15,9 @@ class Radical extends Model
     {
         return $this->hasOne(Stage::class);
     }
+
+    public function kanjis()
+    {
+        return $this->belongsToMany(Kanji::class);
+    }
 }
