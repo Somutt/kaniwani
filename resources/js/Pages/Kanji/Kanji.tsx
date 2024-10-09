@@ -1,9 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import AddKanjiForm from "./Partials/AddKanjiForm";
-import { PageProps } from "@/types";
+import { KanjiProps, PageProps } from "@/types";
 
-export default function Kanji({ auth }: PageProps) {
+export default function Kanji({ auth, stages, kanjis, levels_used }: PageProps<KanjiProps>) {
     return (
         <AuthenticatedLayout 
             user={auth.user}
@@ -11,7 +11,7 @@ export default function Kanji({ auth }: PageProps) {
         >
             <Head title="Kanji" />
 
-            <></>
+            <AddKanjiForm stages={stages} ></AddKanjiForm>
         </AuthenticatedLayout>
     );
 }

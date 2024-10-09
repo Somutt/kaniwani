@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kanji;
+use App\Models\Stage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,7 +14,24 @@ class KanjiController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Kanji/Kanji');
+        $levels_used = [];
+        
+        $stages = Stage::orderBy('stage_number')->get(); // Retrieve all the stages in crescent order
+        $kanjis = Kanji::orderBy('meaning')->get(); // Retrieve all kanjis in alphabetical order
+        $aux = Kanji::all()->groupBy('level')->toArray(); // Retrive all kanjis grouped by levels that are used
+
+        // Populate the levels_used array with the level numbers that have kanjis in it
+        foreach ($aux as $level => $ks) {
+            $levels_used[] = $level;
+        }
+
+        sort($levels_used);
+
+        return Inertia::render('Kanji/Kanji', [
+            'stages' => $stages,
+            'kanjis' => $kanjis,
+            'levels_used' => $levels_used
+        ]);
     }
 
     /**
@@ -21,7 +39,29 @@ class KanjiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ideogram' => 'required|string|min:1|unique:kanjis',
+            'meaning' => 'required|string|min:1',
+            'stage' => 'required|min:1|exists:stages,stage_number',
+        ]);
+
+        $stage = Stage::where('stage_number', $request->stage)->first();
+
+        $stage_id = $stage->id;
+        $level_number = $stage->level->level_number;
+        $meaning = strtolower($request->meaning);
+
+        Kanji::create([
+            'ideogram' => $request->ideogram,
+            'onyomi' => $request->onyomi,
+            'kunyomi' => $request->kunyomi,
+            'meaning' => $meaning,
+            'secondary_meanings' => $request->secondary_meanings,
+            'level' => $level_number,
+            'stage_id' => $stage_id
+        ]);
+
+        return redirect(route('kanji.index'));
     }
 
     /**

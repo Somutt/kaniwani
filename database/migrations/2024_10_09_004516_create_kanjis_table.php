@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kunyomi')->nullable();
             $table->string('meaning', 20);
             $table->string('secondary_meanings', 60)->nullable();
+            $table->integer('level');
             $table->foreignId('stage_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

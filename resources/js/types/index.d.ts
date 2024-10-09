@@ -25,6 +25,15 @@ interface Radical {
     meaning: string;
 }
 
+interface Kanji {
+    id: number;
+    onyomi?: string;
+    kunyomi?: string;
+    meaning: string;
+    secondary_meaning?: string;
+    level: number;
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User;
@@ -53,4 +62,10 @@ export type RadicalListProps = {
 
 export type RadicalCardProps = {
     radical: Radical;
+}
+
+export type KanjiProps = {
+    stages: Stage[];
+    kanjis: Kanji[];
+    levels_used: number[];
 }

@@ -9,7 +9,7 @@ class Kanji extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['onyomi', 'kunyomi', 'meaning', 'ideogram', 'secondary_meanings', 'stage_id'];
+    protected $fillable = ['onyomi', 'kunyomi', 'meaning', 'ideogram', 'secondary_meanings', 'level', 'stage_id'];
 
     public function stage()
     {
