@@ -9,7 +9,7 @@ export default function AddRadicalForm({ stages }: StageProps) {
     const { data, setData, post, reset, errors } = useForm({
         ideogram: '',
         meaning: '',
-        stage: stages[0].stage_number.toString()
+        stage: String(stages[0].stage_number)
     });
 
     const submit: FormEventHandler = (e) => {

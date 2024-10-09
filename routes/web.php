@@ -18,26 +18,27 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware('auth')->name('dashboard');
 
+// levels routes
 Route::resource('levels', LevelController::class)
     ->only(['index', 'store', 'destroy']);
 
 Route::get('levels/{level_number}', [LevelController::class, 'show'])->name('levels.show');
 
+// stages routes
 Route::post('/stage/{level_id}', [StageController::class, 'store'])->name('stage.store');
 
+// radicals routes
 Route::resource('radicals', RadicalController::class)
-    ->only(['index', 'store', 'destroy']);
+    ->only(['index', 'store', 'destroy', 'update']);
 
 Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radicals.show');
 
 /* 
-Route::post('stages', [StageController::class, 'store'])->name('stage.store');
-
 Route::resource('kanji', KanjiController::class)
     ->only(['index', 'store', 'destroy']);
 
 Route::get('kanji/{meaning}', [KanjiController::class, 'show'])->name('kanji.show');
- */
+*/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

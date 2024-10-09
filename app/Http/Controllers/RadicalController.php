@@ -51,7 +51,7 @@ class RadicalController extends Controller
             'stage_id' => $stage_id
         ]);
 
-        redirect(route('radicals.index'));
+        return redirect(route('radicals.index'));
     }
 
     public function show(string $meaning)
@@ -61,6 +61,17 @@ class RadicalController extends Controller
         return Inertia::render('Radicals/RadicalPage', [
             'radical' => $radical
         ]);
+    }
+
+    public function update(Request $request, Radical $radical)
+    {
+        $validated = $request->validate([
+            'meaning' => 'required|string|min:1'
+        ]);
+
+        $radical->update($validated);
+
+        return redirect(route('radicals.show', $radical->meaning));
     }
 
     public function destroy(Radical $radical)

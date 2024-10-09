@@ -14,7 +14,7 @@ export default function RadicalList({ radicals, levels_used }: RadicalListProps)
                                         {radical.level == level ? 
                                             <RadicalCard radical={radical} />
                                             : 
-                                            <></>
+                                            ''
                                         }
                                     </li>
                                 )}
