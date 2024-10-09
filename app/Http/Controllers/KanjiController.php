@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kanji;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class KanjiController extends Controller
 {
@@ -12,7 +13,7 @@ class KanjiController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Kanji/Kanji');
     }
 
     /**

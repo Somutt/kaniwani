@@ -31,6 +31,10 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                     className='px-3 py-2 text-sm leading-4 font-medium text-gray-500 border border-transparent rounded-md mr-1 hover:border-cyan-400 hover:text-cyan-400 transition ease-in-out duration-150'>
                                     Radicals
                                 </Link>
+                                <Link href={route('kanji.index')}
+                                    className='px-3 py-2 text-sm leading-4 font-medium text-gray-500 border border-transparent rounded-md mr-1 hover:border-fuchsia-400 hover:text-fuchsia-400 transition ease-in-out duration-150'>
+                                    Kanji
+                                </Link>
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
