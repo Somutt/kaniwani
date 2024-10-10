@@ -31,7 +31,7 @@ interface Kanji {
     onyomi?: string;
     kunyomi?: string;
     meaning: string;
-    secondary_meaning?: string;
+    secondary_meanings?: string;
     level: number;
 }
 

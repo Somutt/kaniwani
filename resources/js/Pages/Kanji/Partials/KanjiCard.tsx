@@ -1,12 +1,8 @@
 import { KanjiCardProps } from "@/types";
 import { Link } from "@inertiajs/react";
+import capitalize from "@/utils/capitalize";
 
 export default function KanjiCard({ kanji }: KanjiCardProps) {
-    const capitalize = (str: string) => {
-        let ini = str.charAt(0).toUpperCase();
-
-        return str.replace(str[0], ini);
-    }
 
     return (
         <div className="flex flex-row items-center md:flex-col">

@@ -36,11 +36,9 @@ Route::get('radicals/{meaning}', [RadicalController::class, 'show'])->name('radi
 
 //kanji routes
 Route::resource('kanji', KanjiController::class)
-    ->only(['index', 'store', 'destroy']);
+    ->only(['index', 'store', 'destroy', 'update']);
 
 Route::get('kanji/{ideogram}', [KanjiController::class, 'show'])->name('kanji.show');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

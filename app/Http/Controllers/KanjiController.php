@@ -70,7 +70,9 @@ class KanjiController extends Controller
     {
         $kanji = Kanji::where('ideogram', $ideogram)->first();
 
-        dd($kanji);
+        return Inertia::render('Kanji/KanjiPage', [
+            'kanji' => $kanji
+        ]);
     }
 
     /**
@@ -78,7 +80,7 @@ class KanjiController extends Controller
      */
     public function update(Request $request, Kanji $kanji)
     {
-        //
+        dd($request);
     }
 
     /**
