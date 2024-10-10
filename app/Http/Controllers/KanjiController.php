@@ -86,6 +86,8 @@ class KanjiController extends Controller
      */
     public function destroy(Kanji $kanji)
     {
-        //
+        $kanji->delete();
+
+        return redirect(route('kanji.index'));
     }
 }

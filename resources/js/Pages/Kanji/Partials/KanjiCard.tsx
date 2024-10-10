@@ -20,6 +20,14 @@ export default function KanjiCard({ kanji }: KanjiCardProps) {
                     <span>{kanji.meaning.length <= 10 ? capitalize(kanji.meaning) : capitalize(kanji.meaning.slice(0, 7)) + " ..."}</span>
                 </div>
             </Link>
+            <Link
+                href={route('kanji.destroy', kanji.id)}
+                as="button" method="delete"
+                className="hidden bg-red-300 border-2 border-l-0 border-transparent max-h-12
+                    md:flex md:mb-2 md:p-1 md:border-t-0 md:border-l-2
+                    hover:cursor-pointer hover:border-black ">
+                delete
+            </Link>
         </div>
     );
 }
