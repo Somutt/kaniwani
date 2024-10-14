@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kanji;
+use App\Models\Radical;
 use App\Models\Stage;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -69,9 +70,11 @@ class KanjiController extends Controller
     public function show(string $ideogram)
     {
         $kanji = Kanji::where('ideogram', $ideogram)->first();
+        $radicals = Radical::orderBy('level')->get();
 
         return Inertia::render('Kanji/KanjiPage', [
-            'kanji' => $kanji
+            'kanji' => $kanji,
+            'radicals' => $radicals
         ]);
     }
 

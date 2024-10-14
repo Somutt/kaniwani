@@ -58,11 +58,9 @@ class RadicalController extends Controller
     public function show(string $meaning)
     {
         $radical = Radical::where('meaning', $meaning)->first();
-        $kanjis = Kanji::orderBy('id')->get();
 
         return Inertia::render('Radicals/RadicalPage', [
             'radical' => $radical,
-            'kanjis' => $kanjis
         ]);
     }
 

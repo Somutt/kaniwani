@@ -2,10 +2,11 @@ import capitalize from "@/utils/capitalize";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import KanjiMeaningEdit from "./Partials/KanjiMeaningEdit";
 import KanjiReadingEdit from "./Partials/KanjiReadingEdit";
-import { KanjiCardProps, PageProps } from "@/types";
+import AttachRadical from "./Partials/AttachRadical"
+import { KanjiPageProps, PageProps } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 
-export default function KanjiPage({ auth, kanji }: PageProps<KanjiCardProps>) {
+export default function KanjiPage({ auth, kanji, radicals }: PageProps<KanjiPageProps>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -25,7 +26,7 @@ export default function KanjiPage({ auth, kanji }: PageProps<KanjiCardProps>) {
             </header>
 
             <div className="max-w-5xl mx-auto p-3">
-                <h2 className="text-2xl border-b mb-2">Radical Combination</h2> 
+                <AttachRadical kanji={kanji} radicals={radicals} />
                 <KanjiMeaningEdit kanji={kanji} />
                 <KanjiReadingEdit kanji={kanji} />
                 <h2 className="text-2xl border-b">Found in Vocabularies</h2>

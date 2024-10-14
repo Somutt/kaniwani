@@ -1,14 +1,13 @@
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import AttachKanji from "./Partials/AttachKanji";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps, RadicalPageProps } from "@/types";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { ModeEdit } from "@mui/icons-material";
 import { FormEventHandler, useState } from "react";
 
-export default function RadicalPage({ auth, radical, kanjis }: PageProps<RadicalPageProps>)  {
+export default function RadicalPage({ auth, radical }: PageProps<RadicalPageProps>)  {
     const { data, setData, patch, clearErrors, reset, errors } = useForm({
         meaning: radical.meaning
     });
@@ -75,7 +74,6 @@ export default function RadicalPage({ auth, radical, kanjis }: PageProps<Radical
             <div className="max-w-5xl mx-auto p-3">
                 <h2 className="text-2xl border-b">Found in Kanji</h2>
             </div>
-            <AttachKanji radical={radical} kanjis={kanjis} />
         </AuthenticatedLayout>
     )
 }
