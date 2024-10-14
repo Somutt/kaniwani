@@ -1,13 +1,14 @@
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import AttachKanji from "./Partials/AttachKanji";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { PageProps, RadicalCardProps } from "@/types";
+import { PageProps, RadicalPageProps } from "@/types";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { ModeEdit } from "@mui/icons-material";
 import { FormEventHandler, useState } from "react";
 
-export default function RadicalPage({ auth, radical }: PageProps<RadicalCardProps>)  {
+export default function RadicalPage({ auth, radical, kanjis }: PageProps<RadicalPageProps>)  {
     const { data, setData, patch, clearErrors, reset, errors } = useForm({
         meaning: radical.meaning
     });
@@ -27,7 +28,7 @@ export default function RadicalPage({ auth, radical }: PageProps<RadicalCardProp
         >
             <Head title={`Radical / ${radical.meaning}`}/>
 
-            <header className="flex items-center my-6 ml-5">
+            <header className="max-w-5xl mx-auto p-3 flex items-center my-6">
                 <div className="flex text-center text-2xl leading-[3rem] mr-4">
                     <Link href={route('radicals.index')} 
                         className="bg-slate-400 text-slate-100 shadow-md rounded w-12 h-12 mr-2">
@@ -38,7 +39,7 @@ export default function RadicalPage({ auth, radical }: PageProps<RadicalCardProp
                 <h1 className="text-4xl font-thin">{radical.meaning}</h1>
             </header>
 
-            <div className="mx-5">
+            <div className="max-w-5xl mx-auto p-3">
                 <h2 className="text-2xl border-b mb-2">Name</h2>
                 <span className="text-slate-400 font-thin">Primary </span>
                 {editing ?
@@ -71,9 +72,10 @@ export default function RadicalPage({ auth, radical }: PageProps<RadicalCardProp
                     </div>
                 }
             </div>
-            <div className="mx-5 mt-6">
+            <div className="max-w-5xl mx-auto p-3">
                 <h2 className="text-2xl border-b">Found in Kanji</h2>
             </div>
+            <AttachKanji radical={radical} kanjis={kanjis} />
         </AuthenticatedLayout>
     )
 }

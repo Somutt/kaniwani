@@ -25,7 +25,7 @@ export default function KanjiPage({ auth, kanji }: PageProps<KanjiCardProps>) {
             </header>
 
             <div className="max-w-5xl mx-auto p-3">
-                <h2 className="text-2xl border-b mb-2">Radical Combination</h2>
+                <h2 className="text-2xl border-b mb-2">Radical Combination</h2> 
                 <KanjiMeaningEdit kanji={kanji} />
                 <KanjiReadingEdit kanji={kanji} />
                 <h2 className="text-2xl border-b">Found in Vocabularies</h2>

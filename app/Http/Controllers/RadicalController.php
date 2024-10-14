@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kanji;
 use App\Models\Radical;
 use App\Models\Stage;
 use Illuminate\Http\Request;
@@ -57,9 +58,11 @@ class RadicalController extends Controller
     public function show(string $meaning)
     {
         $radical = Radical::where('meaning', $meaning)->first();
+        $kanjis = Kanji::orderBy('id')->get();
 
         return Inertia::render('Radicals/RadicalPage', [
-            'radical' => $radical
+            'radical' => $radical,
+            'kanjis' => $kanjis
         ]);
     }
 
