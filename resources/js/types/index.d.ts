@@ -87,4 +87,5 @@ export type KanjiCardProps = {
 export type KanjiPageProps = {
     kanji: Kanji;
     radicals: Radical[];
+    kanjiRadicals: Radical[];
 }

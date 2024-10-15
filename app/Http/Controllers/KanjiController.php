@@ -69,12 +69,15 @@ class KanjiController extends Controller
      */
     public function show(string $ideogram)
     {
-        $kanji = Kanji::where('ideogram', $ideogram)->first();
+        $kanji = Kanji::where('ideogram', $ideogram)->with('radicals:id,ideogram,meaning')->first();
         $radicals = Radical::orderBy('level')->get();
+        
+        $kanji_radicals = $kanji->radicals;
 
         return Inertia::render('Kanji/KanjiPage', [
             'kanji' => $kanji,
-            'radicals' => $radicals
+            'radicals' => $radicals,
+            'kanjiRadicals' => $kanji_radicals,
         ]);
     }
 

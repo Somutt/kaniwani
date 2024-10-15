@@ -6,7 +6,7 @@ import AttachRadical from "./Partials/AttachRadical"
 import { KanjiPageProps, PageProps } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 
-export default function KanjiPage({ auth, kanji, radicals }: PageProps<KanjiPageProps>) {
+export default function KanjiPage({ auth, kanji, radicals, kanjiRadicals }: PageProps<KanjiPageProps>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -26,7 +26,7 @@ export default function KanjiPage({ auth, kanji, radicals }: PageProps<KanjiPage
             </header>
 
             <div className="max-w-5xl mx-auto p-3">
-                <AttachRadical kanji={kanji} radicals={radicals} />
+                <AttachRadical kanji={kanji} radicals={radicals} kanjiRadicals={kanjiRadicals} />
                 <KanjiMeaningEdit kanji={kanji} />
                 <KanjiReadingEdit kanji={kanji} />
                 <h2 className="text-2xl border-b">Found in Vocabularies</h2>
