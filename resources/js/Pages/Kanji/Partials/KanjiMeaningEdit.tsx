@@ -10,7 +10,7 @@ import { useForm } from "@inertiajs/react";
 export default function KanjiMeaningExit({ kanji }: KanjiCardProps) {
     const { data, setData, patch, clearErrors, reset, errors } = useForm({
         meaning: kanji.meaning,
-        secondary_meanings: kanji.secondary_meanings
+        secondary_meanings: kanji.secondary_meanings || ''
     });
 
     const [editing, setEditing] = useState(false);
@@ -45,19 +45,16 @@ export default function KanjiMeaningExit({ kanji }: KanjiCardProps) {
                                     onChange={ (e) => setData('meaning', e.target.value) }
                                 />
                             </div>
-                            {kanji.secondary_meanings ?
-                                <div className="mt-2">
-                                    <span className="text-slate-400 font-thin">Alternative </span> 
-                                    <TextInput
-                                    maxLength={60}
-                                    className="rounded-md px-4 py-2"
-                                    value={data.secondary_meanings}
-                                    onChange={ (e) => setData('secondary_meanings', e.target.value) }
-                                    />
-                                </div>
-                            :
-                                ''
-                            }
+
+                            <div className="mt-2">
+                                <span className="text-slate-400 font-thin">Alternative </span> 
+                                <TextInput
+                                maxLength={60}
+                                className="rounded-md px-4 py-2"
+                                value={data.secondary_meanings}
+                                onChange={ (e) => setData('secondary_meanings', e.target.value) }
+                                />
+                            </div>
                             <div className='space-x-2'>
                                 <PrimaryButton className='mt-4'>Save</PrimaryButton>
                                 <button
