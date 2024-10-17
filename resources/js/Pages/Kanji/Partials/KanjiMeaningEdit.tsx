@@ -4,7 +4,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import InputError from "@/Components/InputError";
 import { ModeEdit } from "@mui/icons-material";
 import { KanjiCardProps } from "@/types";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { useForm } from "@inertiajs/react";
 
 export default function KanjiMeaningExit({ kanji }: KanjiCardProps) {
@@ -14,6 +14,14 @@ export default function KanjiMeaningExit({ kanji }: KanjiCardProps) {
     });
 
     const [editing, setEditing] = useState(false);
+
+    const submitMeaning: FormEventHandler = (e) => {
+        e.preventDefault();
+
+        setEditing(false);
+
+        patch(route('kanji.update', kanji.id));
+    }
 
     return (
         <>
@@ -26,7 +34,7 @@ export default function KanjiMeaningExit({ kanji }: KanjiCardProps) {
             <div className="flex flex-col">
                 <div className="mb-2 py-2">
                     {editing ?
-                        <form>
+                        <form onSubmit={submitMeaning}>
                             <div>
                                 <span className="text-slate-400 font-thin">Primary </span> 
                                 <TextInput

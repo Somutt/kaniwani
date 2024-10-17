@@ -16,6 +16,8 @@ export default function KanjiReadingEdit({ kanji }: KanjiCardProps) {
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
+        setEditing(false);
+
         patch(route('kanji.update', kanji.id), { onSuccess: () => setEditing(false) } );
     }
 

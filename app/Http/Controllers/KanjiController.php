@@ -86,7 +86,21 @@ class KanjiController extends Controller
      */
     public function update(Request $request, Kanji $kanji)
     {
-        dd($request);
+        $validated = $request->validate([
+            'onyomi' => '',
+            'kunyomi' => ''
+        ]);
+
+        if ($request->meaning) {
+            $validated = $request->validate([
+                'meaning' => 'required|string|min:1',
+                'secondary_meanings' => ''
+            ]);
+        }
+
+        $kanji->update($validated);
+
+        return redirect(route('kanji.show', $kanji->ideogram));
     }
 
     /**
