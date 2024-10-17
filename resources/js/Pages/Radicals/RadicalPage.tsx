@@ -2,12 +2,13 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import capitalize from "@/utils/capitalize";
 import { PageProps, RadicalPageProps } from "@/types";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { ModeEdit } from "@mui/icons-material";
 import { FormEventHandler, useState } from "react";
 
-export default function RadicalPage({ auth, radical }: PageProps<RadicalPageProps>)  {
+export default function RadicalPage({ auth, radical, kanjis }: PageProps<RadicalPageProps>)  {
     const { data, setData, patch, clearErrors, reset, errors } = useForm({
         meaning: radical.meaning
     });
@@ -74,6 +75,18 @@ export default function RadicalPage({ auth, radical }: PageProps<RadicalPageProp
             <div className="max-w-5xl mx-auto p-3">
                 <h2 className="text-2xl border-b">Found in Kanji</h2>
             </div>
+            <ul className="max-w-5xl mx-auto p-3 flex flex-wrap items-center">
+                {kanjis.map( k => 
+                    <li key={k.id} className="flex flex-col items-center justify-between flex-1 text-white bg-fuchsia-400 p-3 border border-white 
+                        min-w-28 max-w-28 min-h-28 max-h-28">
+                        <span className="text-4xl">{k.ideogram}</span>
+                        <div className="flex flex-col items-center text-sm">
+                            <span>{k.onyomi ? k.onyomi.slice(0,3) : k.kunyomi?.slice(0,3)}</span>
+                            <span>{k.meaning.length <= 10 ? capitalize(k.meaning) : capitalize(k.meaning.slice(0, 7)) + " ..."}</span>
+                        </div>
+                    </li>
+                )}
+            </ul>
         </AuthenticatedLayout>
     )
 }

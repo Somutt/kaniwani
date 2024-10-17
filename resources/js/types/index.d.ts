@@ -63,6 +63,7 @@ export type RadicalListProps = {
 
 export type RadicalPageProps = {
     radical: Radical;
+    kanjis: Kanji[];
 }
 
 export type RadicalCardProps = {
