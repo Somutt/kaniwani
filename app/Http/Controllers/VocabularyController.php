@@ -84,6 +84,8 @@ class VocabularyController extends Controller
      */
     public function destroy(Vocabulary $vocabulary)
     {
-        //
+        $vocabulary->delete();
+
+        return redirect(route('vocabularies.index'));
     }
 }
