@@ -46,6 +46,8 @@ Route::get('kanji/{ideogram}', [KanjiController::class, 'show'])->name('kanji.sh
 Route::resource('vocabularies', VocabularyController::class)
     ->only(['index', 'store', 'destroy', 'update']);
 
+Route::get('vocabularies/{ideograms}', [VocabularyController::class, 'show'])->name('vocabularies.show');
+
 //kanji-radical routes
 Route::post('/kanji_radical', [KanjiRadicalController::class, 'store'])->name('kanji_radical.store');
 

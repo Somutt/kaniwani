@@ -40,7 +40,7 @@ class VocabularyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ideograms' => 'required|string|min:1|unique:kanjis',
+            'ideograms' => 'required|string|min:1|unique:vocabularies',
             'meaning' => 'required|string|min:1',
             'readings' => 'required|string|min:1',
             'stage' => 'required|min:1|exists:stages,stage_number'
@@ -53,7 +53,7 @@ class VocabularyController extends Controller
 
         Vocabulary::create([
             'ideograms' => $request->ideograms,
-            'meaning' => $request->meanings,
+            'meaning' => $request->meaning,
             'secondary_meanings' => $request->secondary_meanings,
             'readings' => $request->readings,
             'level' => $level_number,

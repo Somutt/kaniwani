@@ -1,7 +1,8 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AddVocabularyForm from "./Partials/AddVocabularyForm";
+import VocabularyList from "./Partials/VocabularyList";
 import { PageProps, VocabularyProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import AddVocabularyForm from "./Partials/AddVocabularyForm";
 
 export default function Vocabularies({ auth, stages, vocabularies, levels_used }: PageProps<VocabularyProps>) {
     return (
@@ -12,6 +13,7 @@ export default function Vocabularies({ auth, stages, vocabularies, levels_used }
             <Head title="Vocabularies" />
 
             <AddVocabularyForm stages={stages} />
+            <VocabularyList vocabularies={vocabularies} levels_used={levels_used} />
         </AuthenticatedLayout>
     );
 }

@@ -105,3 +105,12 @@ export type VocabularyProps = {
     vocabularies: Vocabulary[];
     levels_used: number[];
 }
+
+export type VocabularyListProps = {
+    vocabularies: Vocabulary[];
+    levels_used: number[];
+}
+
+export type VocabularyCardProps = {
+    vocabulary: Vocabulary;
+}
