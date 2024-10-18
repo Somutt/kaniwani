@@ -35,6 +35,10 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                     className='px-3 py-2 text-sm leading-4 font-medium text-gray-500 border border-transparent rounded-md mr-1 hover:border-fuchsia-400 hover:text-fuchsia-400 transition ease-in-out duration-150'>
                                     Kanji
                                 </Link>
+                                <Link href={route('vocabularies.index')}
+                                    className='px-3 py-2 text-sm leading-4 font-medium text-gray-500 border border-transparent rounded-md mr-1 hover:border-purple-400 hover:text-purple-400 transition ease-in-out duration-150'>
+                                    Vocabularies
+                                </Link>
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
@@ -109,6 +113,8 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink href={route('levels.index')}>Levels</ResponsiveNavLink>
                             <ResponsiveNavLink href={route('radicals.index')}>Radicals</ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('kanji.index')}>Kanji</ResponsiveNavLink>
+                            <ResponsiveNavLink href={route('vocabularies.index')}>Vocabularies</ResponsiveNavLink>
                             <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out

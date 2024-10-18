@@ -6,6 +6,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RadicalController;
 use App\Http\Controllers\StageController;
+use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -40,6 +41,10 @@ Route::resource('kanji', KanjiController::class)
     ->only(['index', 'store', 'destroy', 'update']);
 
 Route::get('kanji/{ideogram}', [KanjiController::class, 'show'])->name('kanji.show');
+
+// vocabularies routes
+Route::resource('vocabularies', VocabularyController::class)
+    ->only(['index', 'store', 'destroy', 'update']);
 
 //kanji-radical routes
 Route::post('/kanji_radical', [KanjiRadicalController::class, 'store'])->name('kanji_radical.store');

@@ -35,6 +35,15 @@ interface Kanji {
     level: number;
 }
 
+interface Vocabulary {
+    id: number;
+    ideograms: string;
+    meaning: string;
+    secondary_meanings: string;
+    readings: string;
+    level: number;
+}
+
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User;
@@ -89,4 +98,10 @@ export type KanjiPageProps = {
     kanji: Kanji;
     radicals: Radical[];
     kanjiRadicals: Radical[];
+}
+
+export type VocabularyProps = {
+    stages: Stage[];
+    vocabularies: Vocabulary[];
+    levels_used: number[];
 }
