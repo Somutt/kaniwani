@@ -31,6 +31,18 @@ export default function VocabularyPage({ auth, vocabulary, kanjis }: PageProps<V
             <div className="max-w-5xl mx-auto p-3">
                 <h2 className="text-2xl border-b">Found in Kanji</h2>
             </div>
+            <ul className="max-w-5xl mx-auto p-3 flex flex-wrap items-center">
+                {kanjis.map( k => 
+                    <li key={k.id} className="flex flex-col items-center justify-between flex-1 text-white bg-fuchsia-400 p-3 border border-white 
+                        min-w-28 max-w-28 min-h-28 max-h-28">
+                        <span className="text-4xl">{k.ideogram}</span>
+                        <div className="flex flex-col items-center text-sm">
+                            <span>{k.onyomi ? k.onyomi.slice(0,3) : k.kunyomi?.slice(0,3)}</span>
+                            <span>{k.meaning.length <= 10 ? capitalize(k.meaning) : capitalize(k.meaning.slice(0, 7)) + " ..."}</span>
+                        </div>
+                    </li>
+                )}
+            </ul>
         </AuthenticatedLayout>
     );
 }
