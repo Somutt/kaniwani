@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kanji;
 use App\Models\Radical;
 use App\Models\Stage;
+use App\Models\Vocabulary;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -71,13 +72,17 @@ class KanjiController extends Controller
     {
         $kanji = Kanji::where('ideogram', $ideogram)->with('radicals:id,ideogram,meaning')->first();
         $radicals = Radical::orderBy('level')->get();
+        $vocabularies = Vocabulary::orderBy('level')->get();
         
         $kanji_radicals = $kanji->radicals;
+        $kanji_vocabs = $kanji->vocabularies;
 
         return Inertia::render('Kanji/KanjiPage', [
             'kanji' => $kanji,
             'radicals' => $radicals,
             'kanjiRadicals' => $kanji_radicals,
+            'vocabularies' => $vocabularies,
+            'kanjiVocabs' => $kanji_vocabs
         ]);
     }
 

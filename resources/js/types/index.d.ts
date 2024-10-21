@@ -98,6 +98,20 @@ export type KanjiPageProps = {
     kanji: Kanji;
     radicals: Radical[];
     kanjiRadicals: Radical[];
+    vocabularies: Vocabulary[];
+    kanjiVocabs: Vocabulary[];
+}
+
+export type AttachRadicalProps = {
+    kanji: Kanji;
+    radicals: Radical[];
+    kanjiRadicals: Radical[];
+}
+
+export type AttachVocabularyProps = {
+    kanji: Kanji;
+    vocabularies: Vocabulary[];
+    kanjiVocabs: Vocabulary[];
 }
 
 export type VocabularyProps = {

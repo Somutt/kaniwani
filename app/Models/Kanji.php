@@ -20,4 +20,9 @@ class Kanji extends Model
     {
         return $this->belongsToMany(Radical::class);
     }
+
+    public function vocabularies()
+    {
+        return $this->belongsToMany(Vocabulary::class);
+    }
 }

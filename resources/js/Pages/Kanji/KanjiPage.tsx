@@ -5,8 +5,9 @@ import KanjiReadingEdit from "./Partials/KanjiReadingEdit";
 import AttachRadical from "./Partials/AttachRadical"
 import { KanjiPageProps, PageProps } from "@/types";
 import { Head, Link } from "@inertiajs/react";
+import AttachVocabulary from "./Partials/AttachVocabulary";
 
-export default function KanjiPage({ auth, kanji, radicals, kanjiRadicals }: PageProps<KanjiPageProps>) {
+export default function KanjiPage({ auth, kanji, radicals, kanjiRadicals, vocabularies, kanjiVocabs }: PageProps<KanjiPageProps>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -29,7 +30,7 @@ export default function KanjiPage({ auth, kanji, radicals, kanjiRadicals }: Page
                 <AttachRadical kanji={kanji} radicals={radicals} kanjiRadicals={kanjiRadicals} />
                 <KanjiMeaningEdit kanji={kanji} />
                 <KanjiReadingEdit kanji={kanji} />
-                <h2 className="text-2xl border-b">Found in Vocabularies</h2>
+                <AttachVocabulary kanji={kanji} vocabularies={vocabularies} kanjiVocabs={kanjiVocabs} />
             </div>
         </AuthenticatedLayout>
     );

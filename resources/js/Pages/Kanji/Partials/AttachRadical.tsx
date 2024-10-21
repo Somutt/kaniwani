@@ -1,11 +1,11 @@
 import PrimaryButton from "@/Components/PrimaryButton";
 import { FormEventHandler, useState } from "react";
 import { Add } from "@mui/icons-material";
-import { KanjiPageProps } from "@/types";
+import { AttachRadicalProps } from "@/types";
 import { Link, useForm } from "@inertiajs/react";
 
-export default function AttachKanji({ kanji, radicals, kanjiRadicals }: KanjiPageProps) {
-   const { data, setData, post, reset, clearErrors, errors } = useForm({
+export default function AttachKanji({ kanji, radicals, kanjiRadicals }: AttachRadicalProps) {
+   const { data, setData, post, reset, clearErrors } = useForm({
         kanjiId: kanji.id,
         ideogram: radicals[0].ideogram,
     })
