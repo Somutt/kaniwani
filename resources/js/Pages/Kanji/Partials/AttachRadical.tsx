@@ -23,7 +23,7 @@ export default function AttachKanji({ kanji, radicals, kanjiRadicals }: KanjiPag
     return (
         <>
             <h2 className="text-2xl border-b">Radical Combination</h2>
-            <div className="hidden md:max-w-4xl mx-auto p-2 md:flex">
+            <div className="hidden md:max-w-5xl mx-auto py-2 md:flex">
             <div>
                 <ul className="flex items-center text-white">
                 {kanjiRadicals.map ( (kr) => 

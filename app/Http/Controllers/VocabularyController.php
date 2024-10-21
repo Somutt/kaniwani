@@ -66,9 +66,15 @@ class VocabularyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vocabulary $vocabulary)
+    public function show(string $ideograms)
     {
-        //
+        $vocabulary = Vocabulary::where('ideograms', $ideograms)->with('kanjis:id,ideogram,meaning,onyomi,kunyomi')->first();
+        $kanjis = $vocabulary->kanjis;
+
+        return Inertia::render('Vocabularies/VocabularyPage', [
+            'vocabulary' => $vocabulary,
+            'kanjis' => $kanjis
+        ]);
     }
 
     /**
@@ -76,7 +82,16 @@ class VocabularyController extends Controller
      */
     public function update(Request $request, Vocabulary $vocabulary)
     {
-        //
+        if ($request->meaning) {
+            $validated = $request->validate([
+                'meaning' => 'required|string|min:1',
+                'secondary_meanings' => ''
+            ]);
+        }
+
+        $vocabulary->update($validated);
+
+        return redirect(route('vocabularies.show', $vocabulary->ideograms));
     }
 
     /**

@@ -114,3 +114,8 @@ export type VocabularyListProps = {
 export type VocabularyCardProps = {
     vocabulary: Vocabulary;
 }
+
+export type VocabularyPageProps = {
+    vocabulary: Vocabulary;
+    kanjis: Kanji[];
+}
