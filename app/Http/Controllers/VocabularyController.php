@@ -82,12 +82,15 @@ class VocabularyController extends Controller
      */
     public function update(Request $request, Vocabulary $vocabulary)
     {
-        if ($request->meaning) {
+        $request->meaning ?
             $validated = $request->validate([
                 'meaning' => 'required|string|min:1',
                 'secondary_meanings' => ''
+            ])
+        :
+            $validated = $request->validate([
+                'readings' => 'required|string|min:1'
             ]);
-        }
 
         $vocabulary->update($validated);
 

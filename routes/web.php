@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KanjiController;
 use App\Http\Controllers\KanjiRadicalController;
+use App\Http\Controllers\KanjiVocabularyController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RadicalController;
@@ -52,6 +53,11 @@ Route::get('vocabularies/{ideograms}', [VocabularyController::class, 'show'])->n
 Route::post('/kanji_radical', [KanjiRadicalController::class, 'store'])->name('kanji_radical.store');
 
 Route::delete('/kanji_radical/{kanji}/{radical}', [KanjiRadicalController::class, 'destroy'])->name('kanji_radical.destroy');
+
+//kanji-vocab routes
+Route::post('/kanji_vocab', [KanjiVocabularyController::class, 'store'])->name('kanji_vocab.store');
+
+Route::delete('kanji_vocab/{kanji}/{vocabulary}', [KanjiVocabularyController::class, 'destroy'])->name('kanji_vocab.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
